@@ -1,5 +1,5 @@
 # Introduction
-This repository provides source code for replication of SSVEPNet [1]. SSVEPNet is an efficient CNN-LSTM mixed network with spectral normalization and label smoothing technologies. It aims to reduce the gap of classification performance between intra- and inter-subject experiments and implement a high-performance BCI system with limited training data.
+This repository provides source code for replication of SSVEPNet [1]. SSVEPNet is an efficient CNN-LSTM mixed network with spectral normalization and label smoothing technologies. It aims to reduce the gap of classification performance between intra- and inter-subject experiments and implement a high-performance SSVEP-BCI system with limited training data.
 
 ![image](show_img/SSVEPNet.jpg)
 
