@@ -7,7 +7,7 @@ This repository provides source code for replication of SSVEPNet [1]. SSVEPNet i
 - `data/Dial`: A 12-class public SSVEP dataset [2].
 - `Model/SSVEPNet.py`: Implementation of CNN-LSTM mixed network with pytorch.
 - `Result/DatasetA`: Recorded classification results.
-- `Train/Classifier_Trainer.py`: Training code for any DL-based classifer model.
+- `Train/Classifier_Trainer.py`: Training code for any DL-based classifier model.
 - `Test/SSVEPNet_Test.py`: Evaluating the performance for SSVEPNet.
 - `Utils/EEGDataset.py`: Providing the data for intra- and inter- subject experiments.
 - `Utils/Constraint.py`: Implementation of spectral normalization and spatial convolution kernel constraint. 
