@@ -6,7 +6,7 @@ import torch.nn.functional as F
 from torch import nn
 class CELoss_Marginal_Smooth(nn.Module):
 
-    def __init__(self, class_num, alpha=0.4, stimulus_type='12'):
+    def __init__(self, class_num, alpha=0.6, stimulus_type='12'):
         super(CELoss_Marginal_Smooth, self).__init__()
         self.class_num = class_num
         self.alpha = alpha
@@ -61,7 +61,7 @@ class CELoss_Marginal_Smooth(nn.Module):
         log_prob = F.log_softmax(outputs, dim=1)
         att_loss = - torch.sum(log_prob * smoothed_labels) / outputs.size(-2)
         ce_loss = nn.CrossEntropyLoss()(outputs, targets)
-        loss_add = self.alpha * att_loss + (1 - self.alpha) * ce_loss
+        loss_add = self.alpha * ce_loss + (1 - self.alpha) * att_loss
         return loss_add
 
 

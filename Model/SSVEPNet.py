@@ -86,17 +86,6 @@ class ESNet(nn.Module):
             nn.Dropout(self.dropout_level),
             nn.Linear(self.D2, num_classes))
 
-        self.fc1 = nn.Sequential(nn.Linear(self.fcUnit, self.D1),
-                                nn.PReLU())
-
-        self.fc2 = nn.Sequential(nn.Linear(self.D1, self.D2),
-                                nn.PReLU(),
-                                nn.Dropout())
-
-        self.fc3 = nn.Linear(self.D2, num_classes)
-
-
-
     def forward(self, x):
         out = self.conv_layers(x)
         out = out.squeeze(2)

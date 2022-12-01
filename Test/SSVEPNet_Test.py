@@ -22,10 +22,10 @@ from Train import Classifier_Trainer
     DatasetB(1S/0.5S):  500/100   64/30    0.001/0.01     N/Y        1/0.5    250   1000   8     80   0/0.0003   1/5 
 '''
 parser = argparse.ArgumentParser()
-parser.add_argument('--epochs', type=int, default=50, help="number of epochs")
+parser.add_argument('--epochs', type=int, default=500, help="number of epochs")
 parser.add_argument('--bz', type=int, default=30, help="number of batch")
 parser.add_argument('--lr', type=float, default=0.01, help="learning rate")
-parser.add_argument('--ws', type=float, default=1.0, help="window size of ssvep")
+parser.add_argument('--ws', type=float, default=0.5, help="window size of ssvep")
 parser.add_argument('--Kf', type=int, default=1, help="k-fold cross validation")
 parser.add_argument('--Nh', type=int, default=180, help="number of trial")
 parser.add_argument('--Nc', type=int, default=8, help="number of channel")
@@ -53,9 +53,12 @@ for fold_num in range(opt.Kf):
         # EEGData_Test = EEGDataset.getSSVEP12Intra(subject=testSubject, KFold=fold_num, n_splits=opt.Kf,
         #                                          mode='train')
 
+        EEGData_Train = EEGDataset.getSSVEP12Intra(subject=testSubject, train_ratio=0.2, mode='train')
+        EEGData_Test = EEGDataset.getSSVEP12Intra(subject=testSubject, train_ratio=0.2, mode='test')
+
         # -----------Inter-Subject Experiments--------------
-        EEGData_Train = EEGDataset.getSSVEP12Inter(subject=testSubject, mode='train')
-        EEGData_Test = EEGDataset.getSSVEP12Inter(subject=testSubject, mode='test')
+        # EEGData_Train = EEGDataset.getSSVEP12Inter(subject=testSubject, mode='train')
+        # EEGData_Test = EEGDataset.getSSVEP12Inter(subject=testSubject, mode='test')
 
         EEGData_Train, EEGLabel_Train = EEGData_Train[:]
         EEGData_Train = EEGData_Train[:, :, :, :int(opt.Fs * opt.ws)]
@@ -82,12 +85,12 @@ for fold_num in range(opt.Kf):
         # criterion = nn.CrossEntropyLoss(reduction="none")
         criterion = LossFunction.CELoss_Marginal_Smooth(opt.Nf, stimulus_type='12')
         valid_acc = Classifier_Trainer.train_on_batch(opt.epochs, train_dataloader, valid_dataloader, opt.lr, criterion,
-                                                      net, devices, wd=opt.wd, lr_jitter=False)
+                                                      net, devices, wd=opt.wd, lr_jitter=True)
         final_valid_acc_list.append(valid_acc)
 
     final_acc_list.append(final_valid_acc_list)
 
 
 # 3、Plot Result
-Ploter.plot_save_Result(final_acc_list, model_name='SSVEPNet', dataset='DatasetA', UD=True, ratio=3, win_size=str(opt.ws),
+Ploter.plot_save_Result(final_acc_list, model_name='SSVEPNet', dataset='DatasetA', UD=0, ratio=3, win_size=str(opt.ws),
                         text=True)
