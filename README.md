@@ -31,6 +31,6 @@ python SSVEPNet_Test.py
 
 # Reference
 [1] Pan Y, Chen J, Zhang Y, et al. An efficient CNN-LSTM network with spectral normalization and label smoothing technologies for SSVEP frequency recognition[J]. Journal of Neural Engineering, 2022, 19(5): 056014. <a href="https://iopscience.iop.org/article/10.1088/1741-2552/ac8dc5/meta">https://iopscience.iop.org/article/10.1088/1741-2552/ac8dc5/meta</a>
-[2] Nakanishi M, Wang Y, Wang Y T, et al. A comparison study of canonical correlation analysis based methods for detecting steady-state visual evoked potentials[J]. PloS one, 2015, 10(10): e0140703. <a href="https://iopscience.iop.org/article/10.1088/1741-2552/ac8dc5/meta">https://iopscience.iop.org/article/10.1088/1741-2552/ac8dc5/meta</a>
+[2] Nakanishi M, Wang Y, Wang Y T, et al. A comparison study of canonical correlation analysis based methods for detecting steady-state visual evoked potentials[J]. PloS one, 2015, 10(10): e0140703. <a href="[https://iopscience.iop.org/article/10.1088/1741-2552/ac8dc5/meta](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0140703)">[https://iopscience.iop.org/article/10.1088/1741-2552/ac8dc5/meta](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0140703)</a>
 
 
