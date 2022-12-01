@@ -6,7 +6,7 @@ from torch import nn
 from Utils import Constraint
 class LSTM(nn.Module):
     '''
-        Employ the Bi-LSTM to len the reliable dependency between spatio-temporal features
+        Employ the Bi-LSTM to learn the reliable dependency between spatio-temporal features
     '''
     def __init__(self, input_size, hidden_size):
         super(LSTM, self).__init__()
