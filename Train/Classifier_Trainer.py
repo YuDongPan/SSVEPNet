@@ -1,6 +1,6 @@
-# 设计师:Pan YuDong
-# 编写者:God's hand
-# 时间:2022/7/4 20:40
+# Designer:Pan YuDong
+# Coder:God's hand
+# Time:2022/7/4 20:40
 import torch
 import time
 def train_on_batch(num_epochs, train_iter, valid_iter, lr, criterion, net, device, wd=0, lr_jitter=False):
