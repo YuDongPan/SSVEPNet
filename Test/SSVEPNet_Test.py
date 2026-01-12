@@ -16,10 +16,13 @@ from Train import Classifier_Trainer
                         epochs    bz     lr   lr_scheduler    ws      Fs    Nt   Nc   Nh   Ns     wd
     DatasetA(1S/0.5S):  500      30    0.01      Y           1/0.5   256   1024  8   180  10  0.0003
     DatasetB(1S/0.5S):  500      16    0.01      Y           1/0.5   250   1000  8    80  10  0.0003
+    DatasetC(1S/0.5S):  500      40    0.01      Y           1/0.5   250   1000  9    200 35  0.0003
+    
 ---------------------------------------------Inter-subject Experiments ---------------------------------
                         epochs     bz          lr       lr_scheduler  ws      Fs     Nt    Nc   Nh      wd        Kf
     DatasetA(1S/0.5S):  500/100   64/30    0.001/0.01     N/Y        1/0.5    256   1024   8    180   0/0.0001   1/5
-    DatasetB(1S/0.5S):  500/100   64/30    0.001/0.01     N/Y        1/0.5    250   1000   8     80   0/0.0003   1/5 
+    DatasetB(1S/0.5S):  500/100   64/30    0.001/0.01     N/Y        1/0.5    250   1000   8     80   0/0.0003   1/5
+    DatasetB(1S/0.5S):  500/100   64/30    0.001/0.01     N/Y        1/0.5    250   1000   8     200   0/0.0003   1/5
 '''
 parser = argparse.ArgumentParser()
 parser.add_argument('--epochs', type=int, default=500, help="number of epochs")
@@ -83,7 +86,7 @@ for fold_num in range(opt.Kf):
         net = Constraint.Spectral_Normalization(net)
         net = net.to(devices)
         # criterion = nn.CrossEntropyLoss(reduction="none")
-        criterion = LossFunction.CELoss_Marginal_Smooth(opt.Nf, stimulus_type='12')
+        criterion = LossFunction.CELoss_Marginal_Smooth(opt.Nf, stimulus_type=f'{Nf}')
         valid_acc = Classifier_Trainer.train_on_batch(opt.epochs, train_dataloader, valid_dataloader, opt.lr, criterion,
                                                       net, devices, wd=opt.wd, lr_jitter=True)
         final_valid_acc_list.append(valid_acc)
