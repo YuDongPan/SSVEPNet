@@ -1,4 +1,4 @@
-# Introduction
+<img width="1082" height="687" alt="image" src="https://github.com/user-attachments/assets/edb017be-1269-4a35-9221-976d8649cc32" /># Introduction
 This repository provides source code for replication of SSVEPNet [1]. SSVEPNet is an efficient CNN-LSTM mixed network with spectral normalization and label smoothing technologies. It aims to reduce the gap of classification performance between intra- and inter-subject experiments and implement a high-performance SSVEP-BCI system with limited training data.
 
 ![image](show_img/SSVEPNet.jpg)
@@ -28,6 +28,10 @@ pip install -r Resource/requirements.txt
 cd Test
 python SSVEPNet_Test.py
 ```
+
+## Results
+
+
 
 # Reference
 [1] Pan Y, Chen J, Zhang Y, et al. An efficient CNN-LSTM network with spectral normalization and label smoothing technologies for SSVEP frequency recognition[J]. Journal of Neural Engineering, 2022, 19(5): 056014. <a href="https://iopscience.iop.org/article/10.1088/1741-2552/ac8dc5/meta">https://iopscience.iop.org/article/10.1088/1741-2552/ac8dc5/meta</a>
