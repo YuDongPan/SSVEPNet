@@ -65,12 +65,15 @@ for fold_num in range(opt.Kf):
 
         EEGData_Train, EEGLabel_Train = EEGData_Train[:]
         EEGData_Train = EEGData_Train[:, :, :, :int(opt.Fs * opt.ws)]
+        # Reshape from (Nf, Nc, Nt, Ns) to (batch, 1, Nc, Nt)
+        EEGData_Train = EEGData_Train.transpose(0, 3, 1, 2).reshape(-1, 1, opt.Nc, int(opt.Fs * opt.ws))
         print("EEGData_Train.shape", EEGData_Train.shape)
         print("EEGLabel_Train.shape", EEGLabel_Train.shape)
         EEGData_Train = torch.utils.data.TensorDataset(EEGData_Train, EEGLabel_Train)
 
         EEGData_Test, EEGLabel_Test = EEGData_Test[:]
         EEGData_Test = EEGData_Test[:, :, :, :int(opt.Fs * opt.ws)]
+        EEGData_Test = EEGData_Test.transpose(0, 3, 1, 2).reshape(-1, 1, opt.Nc, int(opt.Fs * opt.ws))
         print("EEGData_Test.shape", EEGData_Test.shape)
         print("EEGLabel_Test.shape", EEGLabel_Test.shape)
         EEGData_Test = torch.utils.data.TensorDataset(EEGData_Test, EEGLabel_Test)
